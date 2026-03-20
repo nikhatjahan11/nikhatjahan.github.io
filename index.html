@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0e0c; --ink2: #3a3730; --ink3: #7a7570;
+    --gold: #c9913a; --gold-light: #f5e6cc;
+    --teal: #1a5c5c; --teal-light: #e0eeee;
+    --cream: #f7f3ec; --white: #ffffff; --border: rgba(0,0,0,0.09);
+    --warm: #ede8df;
+  }
+  html { font-family: 'DM Sans', sans-serif; color: var(--ink); scroll-behavior: smooth; }
+  body { margin: 0; padding: 0; background: var(--cream); position: relative; min-height: 100vh; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(201,145,58,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(26,92,92,0.07) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,145,58,0.025) 60px, rgba(201,145,58,0.025) 61px),
+      repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(26,92,92,0.02) 60px, rgba(26,92,92,0.02) 61px);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: ''; position: fixed; top: 0; left: 0; width: 320px; height: 320px;
+    background: radial-gradient(circle at 0% 0%, rgba(201,145,58,0.12) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .page-wrap { max-width: 920px; margin: 0 auto; padding: 0 1.75rem 5rem; position: relative; z-index: 1; }
+
+  nav { display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 0.5px solid rgba(201,145,58,0.25); margin-bottom: 3rem; flex-wrap: wrap; position: relative; }
+  nav::after { content: 'NJ'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--gold); }
+  nav a { font-size: 12px; font-weight: 500; color: var(--ink3); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
+  nav a:hover { color: var(--gold); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; padding: 3.5rem 0; border-bottom: 0.5px solid rgba(201,145,58,0.2); margin-bottom: 3rem; }
+  .eyebrow { font-size: 11px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+  .hero-left h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 700; line-height: 1.05; color: var(--ink); margin-bottom: 1rem; }
+  .hero-left h1 em { font-style: italic; color: var(--teal); }
+  .hero-left p { font-size: 14.5px; color: var(--ink2); line-height: 1.75; margin-bottom: 1.75rem; max-width: 380px; }
+  .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 0.6rem 1.4rem; font-size: 12px; font-weight: 500; border-radius: 2px; text-decoration: none; cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em; border: none; }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: var(--teal); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid rgba(0,0,0,0.15); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat-card { background: var(--white); border: 0.5px solid rgba(201,145,58,0.2); border-radius: 4px; padding: 1.25rem; position: relative; overflow: hidden; }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); opacity: 0.4; }
+  .stat-card .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-card .label { font-size: 11.5px; color: var(--ink3); margin-top: 0.35rem; line-height: 1.45; }
+  .stat-card.accent { background: var(--ink); border-color: var(--ink); }
+  .stat-card.accent::before { background: var(--gold); opacity: 1; }
+  .stat-card.accent .num { color: var(--gold); }
+  .stat-card.accent .label { color: rgba(255,255,255,0.5); }
+
+  section { margin-bottom: 3.75rem; }
+  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
+  .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; white-space: nowrap; }
+  .section-header .line { flex: 1; height: 0.5px; background: rgba(201,145,58,0.25); }
+  .section-header .num { font-size: 11px; color: var(--gold); font-weight: 500; letter-spacing: 0.1em; }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-pill { padding: 0.4rem 1rem; font-size: 12.5px; border-radius: 2px; border: 0.5px solid var(--border); color: var(--ink2); background: var(--white); }
+  .skill-pill.core { background: var(--teal-light); color: var(--teal); border-color: rgba(26,92,92,0.2); }
+  .skill-pill.gold { background: var(--gold-light); color: #7a5000; border-color: rgba(201,145,58,0.25); }
+
+  .case-study-featured { background: var(--ink); border-radius: 4px; padding: 2.25rem; margin-bottom: 1rem; position: relative; overflow: hidden; }
+  .case-study-featured::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle at 100% 0%, rgba(201,145,58,0.15) 0%, transparent 70%); }
+  .cs-badge { display: inline-block; font-size: 10px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; border: 0.5px solid rgba(201,145,58,0.4); padding: 3px 10px; border-radius: 2px; margin-bottom: 1rem; }
+  .case-study-featured h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.3; max-width: 600px; }
+  .case-study-featured p { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1.5rem; max-width: 620px; }
+  .cs-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.75rem; }
+  .cs-step { font-size: 11.5px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 0.3rem; }
+  .cs-step .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(201,145,58,0.5); flex-shrink: 0; }
+  .cs-step.done { color: rgba(255,255,255,0.85); }
+  .cs-step.done .dot { background: var(--gold); }
+  .cs-arrow { color: rgba(201,145,58,0.4); font-size: 10px; }
+  .cs-link-gold { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.4rem; font-size: 12px; font-weight: 500; border-radius: 2px; text-decoration: none; background: var(--gold); color: #fff; transition: opacity 0.2s; }
+  .cs-link-gold:hover { opacity: 0.88; }
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .project-card { background: var(--white); border: 0.5px solid rgba(201,145,58,0.15); border-radius: 4px; padding: 1.5rem; transition: border-color 0.25s, transform 0.25s; position: relative; overflow: hidden; }
+  .project-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); opacity: 0; transition: opacity 0.25s; }
+  .project-card:hover { border-color: rgba(201,145,58,0.4); transform: translateY(-3px); }
+  .project-card:hover::after { opacity: 1; }
+  .p-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); margin-bottom: 0.6rem; }
+  .project-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.3; }
+  .project-card p { font-size: 13px; color: var(--ink2); line-height: 1.65; margin-bottom: 0.75rem; }
+  .project-card .metric { font-size: 11.5px; color: var(--teal); font-weight: 500; margin-bottom: 0.75rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 1rem; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 2px; background: var(--warm); color: var(--ink3); border: 0.5px solid rgba(0,0,0,0.07); }
+  .tag.mode { background: var(--gold-light); color: #7a5000; }
+  .p-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 12px; font-weight: 500; color: var(--teal); text-decoration: none; border: 0.5px solid rgba(26,92,92,0.3); border-radius: 2px; padding: 5px 12px; transition: all 0.2s; }
+  .p-link:hover { background: var(--teal-light); border-color: var(--teal); }
+  .p-link.video { color: #b03a2e; border-color: rgba(176,58,46,0.3); }
+  .p-link.video:hover { background: #fdf0ee; border-color: #b03a2e; }
+
+  .timeline { display: flex; flex-direction: column; }
+  .tl-item { display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; padding-bottom: 2rem; position: relative; }
+  .tl-item::before { content: ''; position: absolute; left: 130px; top: 10px; bottom: 0; width: 0.5px; background: rgba(201,145,58,0.2); transform: translateX(0.75rem); }
+  .tl-item:last-child::before { display: none; }
+  .tl-date { font-size: 11.5px; color: var(--ink3); text-align: right; padding-top: 0.25rem; line-height: 1.55; }
+  .tl-content { padding-left: 1.5rem; }
+  .tl-dot { position: absolute; left: 130px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); transform: translateX(0.5rem); border: 2px solid var(--cream); }
+  .tl-content h3 { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+  .tl-content .company { font-size: 12.5px; color: var(--teal); font-weight: 500; margin-bottom: 0.6rem; }
+  .tl-content ul { padding-left: 1rem; }
+  .tl-content li { font-size: 13px; color: var(--ink2); line-height: 1.7; margin-bottom: 0.3rem; }
+  .tl-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 2px; background: var(--teal-light); color: var(--teal); margin-bottom: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .why-card { border-left: 2px solid var(--gold); padding: 1rem 1.25rem; background: var(--white); border-radius: 0 4px 4px 0; }
+  .why-card h4 { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+  .why-card p { font-size: 12.5px; color: var(--ink2); line-height: 1.65; }
+
+  .ach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+  .ach-card { background: var(--white); border: 0.5px solid rgba(201,145,58,0.15); border-radius: 4px; padding: 1.25rem; }
+  .ach-card .icon { font-size: 18px; margin-bottom: 0.5rem; }
+  .ach-card p { font-size: 12.5px; color: var(--ink2); line-height: 1.6; }
+  .ach-card strong { color: var(--ink); font-weight: 500; }
+
+  .contact-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 2.25rem; background: var(--ink); border-radius: 4px; position: relative; overflow: hidden; }
+  .contact-bar::before { content: ''; position: absolute; bottom: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle at 100% 100%, rgba(201,145,58,0.12) 0%, transparent 65%); }
+  .contact-bar h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
+  .contact-bar p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; }
+  .contact-link { font-size: 13px; color: rgba(255,255,255,0.75); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; }
+  .contact-link:hover { color: var(--gold); }
+  .contact-link::before { content: '→'; color: var(--gold); font-size: 12px; }
+
+  .edu-row { display: flex; justify-content: space-between; padding: 0.8rem 1rem; background: var(--white); border: 0.5px solid rgba(201,145,58,0.15); border-radius: 4px; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
+  .edu-row span { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+  .edu-row small { font-size: 12.5px; color: var(--ink3); margin-left: 0.5rem; }
+  .edu-row .yr { font-size: 11.5px; color: var(--teal); font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { grid-template-columns: 1fr 1fr; }
+    .projects-grid, .ach-grid, .why-grid, .contact-bar { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 80px 1fr; gap: 0.75rem; }
+    nav::after { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<nav>
+  <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+  <a onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">Why Me</a>
+  <a onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">Portfolio</a>
+  <a onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</a>
+  <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+</nav>
+
+<section class="hero" id="about">
+  <div class="hero-left">
+    <div class="eyebrow">E-Learning Instructional Designer</div>
+    <h1>Nikhat <em>Jahan</em></h1>
+    <p>7+ years designing evidence-based English courses across Cambridge, CBSE, ICSE and IELTS. Built, piloted, iterated and revived full curricula from scratch. Trained 10,000+ students globally.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#portfolio" class="btn btn-outline">View Work →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card accent"><div class="num">10K+</div><div class="label">Students trained globally</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">Curricula built from scratch</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="label">Portfolio pieces across boards and formats</div></div>
+    <div class="stat-card"><div class="num">+15%</div><div class="label">Pass rate improvement in Cambridge</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header"><span class="num">01</span><h2>Core Skills</h2><div class="line"></div></div>
+  <div class="skills-grid">
+    <span class="skill-pill core">Instructional Design</span>
+    <span class="skill-pill core">e-Learning Course Development</span>
+    <span class="skill-pill core">Curriculum Frameworks</span>
+    <span class="skill-pill core">Assessment Design</span>
+    <span class="skill-pill core">Lesson Plan and Unit Design</span>
+    <span class="skill-pill core">SME Collaboration</span>
+    <span class="skill-pill gold">Cambridge Certified</span>
+    <span class="skill-pill gold">IELTS Trainer</span>
+    <span class="skill-pill gold">NET Qualified</span>
+    <span class="skill-pill">CBSE · ICSE · Cambridge</span>
+    <span class="skill-pill">Video Lecture Scripting</span>
+    <span class="skill-pill">Feedback Driven Iteration</span>
+    <span class="skill-pill">Young Learner Pedagogy</span>
+    <span class="skill-pill">Quality Assurance</span>
+    <span class="skill-pill">LLM and AI Tools</span>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-header"><span class="num">02</span><h2>Why I Fit This Role</h2><div class="line"></div></div>
+  <div class="why-grid">
+    <div class="why-card"><h4>Full instructional design cycle</h4><p>Built courses from scratch covering scope and sequence, lesson plans, worksheets and assessments, then taught them, gathered feedback and iterated until they worked.</p></div>
+    <div class="why-card"><h4>Video content creator</h4><p>Scripted and delivered concept intro videos for CBSE and ICSE students. Knows how to structure visual content so learners actually understand it.</p></div>
+    <div class="why-card"><h4>Experience collaborating with SMEs</h4><p>Worked closely with subject experts at PhysicsWallah, Vedantu and Leap Scholar to validate content and keep courses accurate and effective.</p></div>
+    <div class="why-card"><h4>Comfortable with failure and iteration</h4><p>Piloted the Grade 1 and 2 course, saw what was not working, went back to redesign it and now leads the revived programme as Head of Department.</p></div>
+    <div class="why-card"><h4>Startup ready work style</h4><p>Has delivered results at fast growing edtech startups. Comfortable taking ownership, wearing many hats and working remotely without handholding.</p></div>
+    <div class="why-card"><h4>Writing for all kinds of learners</h4><p>Creates instructional content for young learners in Grade 1 and 2, school students across CBSE and ICSE, and adult professionals preparing for IELTS.</p></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-header"><span class="num">03</span><h2>Portfolio</h2><div class="line"></div></div>
+  <div class="case-study-featured">
+    <div class="cs-badge">Featured Case Study</div>
+    <h3>From pilot to programme — building a Grade 1 and 2 English course from scratch at PhysicsWallah</h3>
+    <p>Designed a full English curriculum for young learners covering phonics, grammar, reading and speaking, going beyond what schools typically teach. Piloted it with batches of 50 to 60 students, taught the content personally, identified the gaps, iterated the design, and now leads the revived programme as Head of Department.</p>
+    <div class="cs-steps">
+      <div class="cs-step done"><div class="dot"></div>Research and design</div>
+      <span class="cs-arrow">→</span>
+      <div class="cs-step done"><div class="dot"></div>Pilot with 50 to 60 students</div>
+      <span class="cs-arrow">→</span>
+      <div class="cs-step done"><div class="dot"></div>Teach and gather feedback</div>
+      <span class="cs-arrow">→</span>
+      <div class="cs-step done"><div class="dot"></div>Identify gaps and iterate</div>
+      <span class="cs-arrow">→</span>
+      <div class="cs-step done"><div class="dot"></div>Now leading the redesign</div>
+    </div>
+    <a class="cs-link-gold" href="https://docs.google.com/spreadsheets/d/16Sk9Cu1s1jK5S8yDEbqs3X4vSrqL8UkTyImH937DtYY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Course Plan →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="p-label">Cambridge · Curriculum Design</div>
+      <h3>Pre A1 to B1 Session Mapping</h3>
+      <p>Full Cambridge session mapping across proficiency levels with a structured scope and sequence running from Pre A1 through to B1.</p>
+      <div class="tags"><span class="tag">Cambridge</span><span class="tag">Scope and sequence</span><span class="tag">Pre A1 to B1</span></div>
+      <a class="p-link" href="https://docs.google.com/spreadsheets/d/17ajYt0EXafQlhQAXQkhiu1KnNA6oT2tBUx9Q1lr1lbI/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">View Plan →</a>
+    </div>
+    <div class="project-card">
+      <div class="p-label">Cambridge · Monthly Planning</div>
+      <h3>One Month Cambridge Curriculum Map</h3>
+      <p>A detailed one month instructional plan with a lesson by lesson breakdown covering objectives, activities and learning outcomes.</p>
+      <div class="tags"><span class="tag">Cambridge</span><span class="tag">Monthly plan</span><span class="tag">Lesson design</span></div>
+      <a class="p-link" href="https://docs.google.com/spreadsheets/d/1jVNuoR7ZcJa_lM33y5IDXbFHmcJyga59x0gqosnvmx0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Plan →</a>
+    </div>
+    <div class="project-card">
+      <div class="p-label">CBSE · Video Lecture</div>
+      <h3>Diary Entry — Concept Introduction</h3>
+      <p>A concept intro video for CBSE English, scripted and delivered to make the topic clear and engaging for school students.</p>
+      <div class="metric">Scripted, designed and delivered</div>
+      <div class="tags"><span class="tag">CBSE</span><span class="tag mode">Hinglish mode</span><span class="tag">Video lecture</span></div>
+      <a class="p-link video" href="https://drive.google.com/file/d/1PdAoOnS_rZ-pMM89rHfXY-tvNVpE7-xa/view?usp=sharing" target="_blank" rel="noopener noreferrer">▶ Watch Video</a>
+    </div>
+    <div class="project-card">
+      <div class="p-label">ICSE · Video Lecture</div>
+      <h3>Determiners — Concept Introduction</h3>
+      <p>A concept intro video for ICSE English, clearly structured to introduce determiners to school students in full English.</p>
+      <div class="metric">Scripted, designed and delivered</div>
+      <div class="tags"><span class="tag">ICSE</span><span class="tag">English mode</span><span class="tag">Video lecture</span></div>
+      <a class="p-link video" href="https://drive.google.com/file/d/1Z3eILtjp9sDsaHOjYOoA5-GzmT4RA1KY/view?usp=sharing" target="_blank" rel="noopener noreferrer">▶ Watch Video</a>
+    </div>
+    <div class="project-card">
+      <div class="p-label">IELTS · Teaching Demo</div>
+      <h3>Live IELTS Teaching — Band 7+ Strategy</h3>
+      <p>A live teaching demo that shows delivery style, how students are kept engaged, and how complex concepts are broken down simply.</p>
+      <div class="metric">70% of students achieved Band 7+ and overall scores improved by 25%</div>
+      <div class="tags"><span class="tag">IELTS</span><span class="tag">Teaching demo</span><span class="tag">YouTube</span></div>
+      <a class="p-link video" href="https://youtu.be/6ZIHFGm3740?si=kHQzL3wb4_UKpYQz" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a>
+    </div>
+    <div class="project-card">
+      <div class="p-label">Freelance · Young Learners</div>
+      <h3>Introduction to Podcasting — Lesson Plan</h3>
+      <p>A freelance lesson plan that introduces young learners to what podcasting is, the different types of podcasts, and hands on activities to go with it.</p>
+      <div class="tags"><span class="tag">Young learners</span><span class="tag">Freelance</span><span class="tag">Lesson plan</span><span class="tag">Modern media</span></div>
+      <a class="p-link" href="https://docs.google.com/document/d/1qp8jWpvtSYil7J1FNBPpGbm5Xs3mxDtWbJc87iLRlR4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Lesson Plan →</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header"><span class="num">04</span><h2>Experience</h2><div class="line"></div></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">May 2024 to Present</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <span class="tl-tag">Current Role</span>
+        <h3>Head of Department, English</h3>
+        <div class="company">PhysicsWallah</div>
+        <ul>
+          <li>Leads the English curriculum for 10,000+ students across CBSE, ICSE and Cambridge, driving a 10% increase in enrolments.</li>
+          <li>Heads the Grade 1 and 2 course revival, redesigning the full curriculum based on what was learned during the pilot.</li>
+          <li>Works with SMEs and developers to improve ICSE content and conducts regular classroom audits for quality assurance.</li>
+          <li>Contributes to educator recruitment across all three curricula.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jan to May 2024</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>IELTS Trainer</h3>
+        <div class="company">Leap Scholar, Remote</div>
+        <ul>
+          <li>Converted 75%+ of demo students into full enrolments through the pilot LIY programme.</li>
+          <li>Ran 5 IELTS batches with 300+ students. 70% achieved Band 7+ and overall scores improved by 25%.</li>
+          <li>Delivered 300+ personalised writing and speaking evaluations with detailed feedback.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jan 2023 to Mar 2024</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>English Instructor</h3>
+        <div class="company">Emma Academy, Freelance Remote</div>
+        <ul>
+          <li>Designed theme and grammar based interactive lessons tailored to Russian learners.</li>
+          <li>Guided complete beginners from A1 to B1 proficiency within five months.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Nov 2022 to Dec 2023</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Master Teacher</h3>
+        <div class="company">Vedantu, Remote</div>
+        <ul>
+          <li>Designed student centred lesson plans that increased engagement by 60%.</li>
+          <li>Led formative and summative assessment design and presented progress at Parent Teacher Meetings.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header"><span class="num">05</span><h2>Achievements and Credentials</h2><div class="line"></div></div>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="icon">🏅</div><p><strong>Top 10 Instructor</strong> — Certificate of Excellence, ranked among top instructors nationally.</p></div>
+    <div class="ach-card"><div class="icon">⭐</div><p><strong>Star of the Quarter</strong> — Awarded by PhysicsWallah for outstanding instructional performance.</p></div>
+    <div class="ach-card"><div class="icon">🎓</div><p><strong>Cambridge Certified</strong> — Trained and qualified to deliver Cambridge accredited English programmes.</p></div>
+    <div class="ach-card"><div class="icon">📝</div><p><strong>NET Qualified</strong> — Passed the National Eligibility Test, demonstrating advanced expertise in education.</p></div>
+    <div class="ach-card"><div class="icon">🌍</div><p><strong>IELTS Band 8.0</strong> — IDP Academic. Demonstrates English mastery at the highest level.</p></div>
+    <div class="ach-card"><div class="icon">🎯</div><p><strong>90+ Marks Cohort</strong> — A significant share of the 10,000+ students trained have scored 90 or above in assessments.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header"><span class="num">06</span><h2>Education and Certifications</h2><div class="line"></div></div>
+  <div class="edu-row"><div><span>TESOL Diploma (280 hrs)</span><small>Asian College of Teachers</small></div><span class="yr">2023 to 2024</span></div>
+  <div class="edu-row"><div><span>B.Ed. in Education</span><small>Chaudhary Ranbir Singh University</small></div><span class="yr">2019 to 2021</span></div>
+  <div class="edu-row"><div><span>M.A. in English</span><small>University of Delhi</small></div><span class="yr">2015 to 2017</span></div>
+  <div class="edu-row"><div><span>B.A. in English</span><small>University of Delhi</small></div><span class="yr">2012 to 2015</span></div>
+</section>
+
+<section id="contact">
+  <div class="contact-bar">
+    <div>
+      <h2>Let's build something great</h2>
+      <p>Open to new opportunities in e-learning and instructional design.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:nikhatjahan914@gmail.com">nikhatjahan914@gmail.com</a>
+      <a class="contact-link" href="tel:+919149342911">+91 91493 42911</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/nikhat-jahan-1624b117a/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+      <span class="contact-link" style="cursor:default;">Roorkee, India</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
